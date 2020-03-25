@@ -3,11 +3,9 @@ package Group6;
 
 import Group6.Agent.Factory.AgentsFactories;
 import Group6.Controller.Controller;
-import Group6.Geometry.Collection.Quadrilaterals;
 import Group6.Geometry.Quadrilateral;
 import Group6.Percept.*;
 import Group6.WorldState.Scenario;
-import Group6.WorldState.Teleport;
 import Group6.WorldState.WorldState;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -41,7 +39,8 @@ public class Main extends Application {
                         new SmellPreceptsBuilder(),
                         new AreaPerceptsBuilder(),
                         new ScenarioPerceptsBuilder()
-                )
+                ),
+            false
         );
 
         WorldState worldState = new WorldState(
@@ -85,6 +84,7 @@ public class Main extends Application {
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
+                            controller.executeTurn(worldState);
                             movingObjects.getChildren().clear();
                             worldState.getGuardStates().forEach(w -> movingObjects.getChildren().add(w.getAgentGui()));
 

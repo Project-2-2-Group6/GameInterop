@@ -1,10 +1,13 @@
 package Group6.Percept;
 
-import Group6.WorldState.AgentState;
+import Group6.WorldState.Object.AgentState;
 import Group6.WorldState.Scenario;
 import Group6.WorldState.WorldState;
 import Interop.Percept.AreaPercepts;
 
+/**
+ * @author Tomasz Darmetko
+ */
 public class AreaPerceptsBuilder {
     public AreaPercepts buildPrecepts(WorldState worldState, AgentState agentState) {
         Scenario scenario = worldState.getScenario();

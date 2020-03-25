@@ -2,10 +2,13 @@ package Group6.WorldState;
 
 import Group6.Geometry.Distance;
 import Group6.Geometry.Point;
-import Interop.Geometry.Direction;
+import Group6.WorldState.Object.AgentState;
 import Interop.Percept.Sound.SoundPercept;
 import Interop.Percept.Sound.SoundPerceptType;
 
+/**
+ * @author Tomasz Darmetko
+ */
 public class Sound {
 
     private Point source;

@@ -2,6 +2,9 @@ package Group6.Geometry;
 
 import Interop.Utils.Require;
 
+/**
+ * @author Tomasz Darmetko
+ */
 public class Vector {
 
     protected double x;
@@ -122,6 +125,10 @@ public class Vector {
 
     public Point toPoint() {
         return new Point(this);
+    }
+
+    public Interop.Geometry.Point toInteropPoint() {
+        return toPoint().toInteropPoint();
     }
 
     public boolean isEqualTo(Vector vector, double tolerance) {

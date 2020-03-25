@@ -1,11 +1,15 @@
 package Group6.Agent;
 
 import Group6.Agent.Guard.RandomGuardTest;
+import Group6.ExtendedUnitTest;
 import Group6.GroupTests;
 import Group6.WorldState.Scenario;
 import SimpleUnitTest.SimpleUnitTest;
 
-public class GuardsTest extends SimpleUnitTest {
+/**
+ * @author Tomasz Darmetko
+ */
+public class GuardsTest extends ExtendedUnitTest {
 
     public static void main(String[] args) {
 

@@ -1,8 +1,13 @@
 package Group6.Geometry;
 
+import Group6.ExtendedUnitTest;
+import Group6.Percept.Vision.RaysTest;
 import SimpleUnitTest.SimpleUnitTest;
 
-public class GeometryTest extends SimpleUnitTest {
+/**
+ * @author Tomasz Darmetko
+ */
+public class GeometryTest extends ExtendedUnitTest {
 
     public static void main(String[] args) {
 
@@ -10,9 +15,10 @@ public class GeometryTest extends SimpleUnitTest {
 
         VectorTest.main(args);
         DirectionTest.main(args);
+        LineTest.main(args);
         LineSegmentTest.main(args);
+        CircleTest.main(args);
         QuadrilateralTest.main(args);
-        RayCastTest.main(args);
 
     }
 

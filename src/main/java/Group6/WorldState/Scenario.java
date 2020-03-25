@@ -10,7 +10,10 @@ import Group6.Geometry.Collection.Quadrilaterals;
 import Group6.Geometry.Distance;
 import Group6.Geometry.Point;
 import Group6.Geometry.Quadrilateral;
+import Group6.WorldState.Object.Teleport;
+import Group6.WorldState.Object.WorldStateObjects;
 import Interop.Percept.Scenario.GameMode;
+import Interop.Percept.Vision.ObjectPerceptType;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -69,6 +72,8 @@ public class Scenario {
     private ArrayList<Teleport> teleports;
     private ArrayList<Quadrilateral> shadedAreas;
 
+    private WorldStateObjects worldStateObjects;
+
     public Scenario(String mapFile) {
         
         // initialize variables
@@ -80,6 +85,16 @@ public class Scenario {
         sentryTowers = new ArrayList<>();
 
         readMap(Paths.get(mapFile));
+
+        worldStateObjects = new WorldStateObjects(
+            new WorldStateObjects(getWalls(), ObjectPerceptType.Wall),
+            new WorldStateObjects(getDoors(), ObjectPerceptType.Door),
+            new WorldStateObjects(getWindows(), ObjectPerceptType.Window),
+            new WorldStateObjects(getSentryTowers(), ObjectPerceptType.SentryTower),
+            getTeleports().toObjects(),
+            new WorldStateObjects(getShadedAreas(), ObjectPerceptType.ShadedArea)
+        );
+
     }
 
     public void readMap(Path filePath) {
@@ -113,7 +128,7 @@ public class Scenario {
                 Quadrilateral tmp;
 
                 try {
-                    if(!id.trim().startsWith("//")){
+                    if(id.trim().startsWith("//")) return;
                     switch (id) {
                         case "gameMode":
                             switch (Integer.parseInt(value)) {
@@ -185,12 +200,14 @@ public class Scenario {
                             viewRays = Integer.parseInt(value);
                             break;
                         case "viewRangeIntruderNormal":
+                        case "viewRangeIntruderNomal":
                             viewRangeIntruderNormal = Double.parseDouble(value);
                             break;
                         case "viewRangeIntruderShaded":
                             viewRangeIntruderShaded = Double.parseDouble(value);
                             break;
                         case "viewRangeGuardNormal":
+                        case "viewRangeGuardNomal":
                             viewRangeGuardNormal = Double.parseDouble(value);
                             break;
                         case "viewRangeGuardShaded":
@@ -248,7 +265,6 @@ public class Scenario {
                             break;
                         default:
                             throw new ScenarioException("Unknown key: " + id);
-                    }
                     }
                 } catch (ScenarioException e) {
                     throw e;
@@ -435,6 +451,10 @@ public class Scenario {
 
     public Quadrilaterals getShadedAreas() {
         return new Quadrilaterals(shadedAreas);
+    }
+
+    public WorldStateObjects getObjects() {
+        return worldStateObjects;
     }
 
     static private class ScenarioException extends RuntimeException {

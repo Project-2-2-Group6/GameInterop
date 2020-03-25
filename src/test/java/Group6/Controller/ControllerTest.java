@@ -9,6 +9,9 @@ import Group6.Percept.*;
 import Group6.WorldState.Scenario;
 import Group6.WorldState.WorldState;
 
+/**
+ * @author Tomasz Darmetko
+ */
 public class ControllerTest extends ExtendedUnitTest {
 
     public static void main(String[] args) {
@@ -24,7 +27,8 @@ public class ControllerTest extends ExtendedUnitTest {
                     new SmellPreceptsBuilder(),
                     new AreaPerceptsBuilder(),
                     new ScenarioPerceptsBuilder()
-                )
+                ),
+                false
             );
 
             WorldState worldState = new WorldState(

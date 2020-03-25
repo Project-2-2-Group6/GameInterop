@@ -2,13 +2,17 @@ package Group6.Agent.Intruder;
 
 import Group6.Agent.RandomAgent;
 import Group6.Examples.Percepts.IntruderPerceptsBuilder;
+import Group6.ExtendedUnitTest;
 import Interop.Action.Action;
 import Interop.Action.Move;
 import Interop.Action.Rotate;
 import Interop.Percept.IntruderPercepts;
 import SimpleUnitTest.SimpleUnitTest;
 
-public class RandomIntruderTest extends SimpleUnitTest {
+/**
+ * @author Tomasz Darmetko
+ */
+public class RandomIntruderTest extends ExtendedUnitTest {
 
     public static void main(String[] args) {
 
